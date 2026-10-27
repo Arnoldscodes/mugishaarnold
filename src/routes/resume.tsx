@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { PageHeader, SiteLayout } from "@/components/site/Layout";
-import { areasOfStudy, education, experience, profile, skills } from "@/data/content";
+import { areasOfStudy, education, experience, languages, profile, skills, strengths } from "@/data/content";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/resume")({
@@ -35,13 +35,16 @@ function Resume() {
           Download résumé (PDF)
         </a>
         <Section title="Education">
-          {education.map((e) => (
-            <div key={e.degree}>
-              <h3 className="text-lg font-semibold">{e.degree}</h3>
-              <p className="text-muted-foreground">{e.school}</p>
-              <p className="mt-1 text-sm text-muted-foreground">{e.period}</p>
-            </div>
-          ))}
+          <div className="space-y-8">
+            {education.map((e) => (
+              <div key={e.degree}>
+                <h3 className="text-lg font-semibold">{e.degree}</h3>
+                <p className="text-muted-foreground">{e.school}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{e.period}</p>
+                {e.note && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{e.note}</p>}
+              </div>
+            ))}
+          </div>
         </Section>
         <Section title="Experience">
           {experience.map((x) => (
@@ -55,7 +58,9 @@ function Resume() {
           ))}
         </Section>
         <Section title="Skills"><Tags items={skills} /></Section>
+        <Section title="Ways of working"><Tags items={strengths} /></Section>
         <Section title="Areas of study"><Tags items={areasOfStudy} /></Section>
+        <Section title="Languages"><Tags items={languages} /></Section>
       </div>
     </SiteLayout>
   );

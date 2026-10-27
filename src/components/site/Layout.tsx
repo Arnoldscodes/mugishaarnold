@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { Menu, X } from "lucide-react";
-import { navLinks, profile, socials } from "@/data/content";
+import { emails, navLinks, profile, socials } from "@/data/content";
 
 export function ExternalLink({ href, children, className }: { href: string; children: ReactNode; className?: string }) {
   return (
@@ -66,9 +66,15 @@ function Footer() {
         <div>
           <p className="font-semibold">Arnold Mugisha</p>
           <p className="mt-1 text-sm text-muted-foreground">{profile.location}</p>
-          <a href={`mailto:${profile.email}`} className="mt-3 inline-block text-sm text-primary hover:underline">
-            {profile.email}
-          </a>
+          <ul className="mt-3 space-y-1">
+            {emails.map((e) => (
+              <li key={e.address}>
+                <a href={`mailto:${e.address}`} className="text-sm text-primary hover:underline">
+                  {e.address}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
         <nav aria-label="Footer">
           <ul className="space-y-2 text-sm">
