@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import { ExternalLink, PageHeader, SiteLayout } from "@/components/site/Layout";
-import { profile, socials } from "@/data/content";
+import { emails, profile, socials } from "@/data/content";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
@@ -55,8 +55,16 @@ function Contact() {
       <PageHeader eyebrow="Contact" title="Let's talk." intro="Have a question, an idea, or an opportunity? I'd be glad to hear from you." />
       <div className="mx-auto grid max-w-3xl gap-12 px-6 md:grid-cols-[1fr_1.4fr]">
         <dl className="space-y-6 text-sm">
-          <div><dt className="text-muted-foreground">Email</dt><dd><a href={`mailto:${profile.email}`} className="text-primary hover:underline">{profile.email}</a></dd></div>
-          <div><dt className="text-muted-foreground">University email</dt><dd><a href={`mailto:${profile.universityEmail}`} className="text-primary hover:underline">{profile.universityEmail}</a></dd></div>
+          {emails.map((e) => (
+            <div key={e.address}>
+              <dt className="text-muted-foreground">{e.label}</dt>
+              <dd><a href={`mailto:${e.address}`} className="text-primary hover:underline">{e.address}</a></dd>
+            </div>
+          ))}
+          <div>
+            <dt className="text-muted-foreground">Phone</dt>
+            <dd><a href={`tel:${profile.phone.replace(/[^\d+]/g, "")}`} className="text-primary hover:underline">{profile.phone}</a></dd>
+          </div>
           <div><dt className="text-muted-foreground">Location</dt><dd>{profile.location}</dd></div>
           <div>
             <dt className="text-muted-foreground">Elsewhere</dt>
