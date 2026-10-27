@@ -21,7 +21,7 @@ export const emails = [
 export const socials = [
   { label: "GitHub (alnaud)", href: "https://github.com/alnaud" },
   { label: "GitHub (arnoldscodes)", href: "https://github.com/arnoldscodes" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/mugisha-alnaud-68686b376/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/mugisha-arnold/" },
 ];
 
 export type Project = {

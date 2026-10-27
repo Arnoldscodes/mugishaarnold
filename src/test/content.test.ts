@@ -15,7 +15,7 @@ describe("Site content", () => {
 
   it("links the real LinkedIn profile", () => {
     expect(socials.map((s) => s.href)).toContain(
-      "https://www.linkedin.com/in/mugisha-alnaud-68686b376/",
+      "https://www.linkedin.com/in/mugisha-arnold/",
     );
   });
 
